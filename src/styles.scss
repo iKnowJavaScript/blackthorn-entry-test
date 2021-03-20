@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "color";
+@import "mixins";
+@import "fonts";
+@import "break-points";
+
+html,
+body {
+  font-family: $SalesforceSans;
+  background: $mainBackgroundColor;
+  color: $black;
+}
