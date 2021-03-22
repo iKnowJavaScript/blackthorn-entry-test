@@ -1,0 +1,132 @@
+<app-loader *ngIf="showLoader"></app-loader>
+
+<div class="container">
+  <div class="custom-stepper" style="margin-bottom: 50px;">
+    <span aria-label="Tickets"
+      class="custom-step justify-content-start active">
+    </span>
+    <span aria-label="Sessions"
+    class="custom-step justify-content-center">
+  </span>
+    <span aria-label="Payments"
+      class="custom-step justify-content-end">
+    </span>
+  </div>
+  <div class="row notice-row mx-0">
+    <div class="col-md-12">
+      <h5>Tickets</h5>
+      <div class="d-flex justify-content-between align-items-center notice-skip">
+        <div class="d-flex">
+          <div class="plan-asset mr-4">
+            <img src="assets/svg/rush-svg.svg" alt="rush-logo" />
+          </div>
+          <div class="d-flex flex-column">  
+            <span>In a rush?</span>
+            <span>Register your tickets now or after checking out. Your choice.</span>
+          </div>
+        </div>
+        <a href="#" class="d-inline-flex my-4">Fill this out later</a>
+
+      </div>
+    </div>
+  </div>
+  <form class="needs-validation" novalidate="">
+  <div class="row form-row">
+    <div class="col-md-12">
+      <p class="mb-0">Billing address</p>
+        <div class="row">
+          <div class="col-md-6 mb-0">
+            <label for="firstName"></label>
+            <input type="text" class="form-control" id="firstName" placeholder="First name" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-0">
+            <label for="lastName"></label>
+            <input type="text" class="form-control" id="lastName" placeholder="Last name" value="" required="">
+            <div class="invalid-feedback">
+              Valid last name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-0">
+          <label for="email"></label>
+          <input type="email" class="form-control" id="email" placeholder="Email">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <label for="address">Would you like to receive the branded connections and other e-communications from the us?</label>
+          <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked>
+              <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio2">Toggle this custom radio</label>
+            </div>
+
+          </div>
+          <div class="invalid-feedback">
+            Please enter your shipping address.
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+
+  <div class="row form-row">
+    <div class="col-md-12">
+      <p class="mb-0">Billing address</p>
+        <div class="row">
+          <div class="col-md-6 mb-0">
+            <label for="firstName"></label>
+            <input type="text" class="form-control" id="firstName" placeholder="First name" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-0">
+            <label for="lastName"></label>
+            <input type="text" class="form-control" id="lastName" placeholder="Last name" value="" required="">
+            <div class="invalid-feedback">
+              Valid last name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-0">
+          <label for="email"></label>
+          <input type="email" class="form-control" id="email" placeholder="Email">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+
+        <div class="mb-0">
+          <label for="address2"></label>
+          <input type="text" class="form-control" id="job" placeholder="Job Title">
+        </div>
+        <div class="mb-0">
+          <label for="address2"></label>
+          <input type="text" class="form-control" id="company" placeholder="Company">
+        </div>
+        <div class="mb-0">
+          <label for="address2"></label>
+          <input type="text" class="form-control" id="country" placeholder="Country">
+        </div>
+      </div>
+    </div>
+
+
+  </form>
+    
+
+</div>
