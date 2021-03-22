@@ -17,13 +17,17 @@ The mockup is simple enough and UI centric.
 
 - I would recommend changing designed Input elements (prefferably Material Input). Mainly because the input label is not visible when a user starts typing on the field or already fill the input.
 
+### Live
+
+- Visit here [Heroku](http://localhost:4200)
+
 ### Installation
 
 - `npm install` (installing dependencies)
 
 ### Developpement
 
-- `npm run start`
+- `npm run start-serve`
 - in your browser [http://localhost:4200](http://localhost:4200)
 
 ## Tests
