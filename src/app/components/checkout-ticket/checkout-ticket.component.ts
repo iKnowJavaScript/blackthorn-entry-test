@@ -28,3 +28,62 @@ export class CheckoutTicketComponent implements OnInit {
   ngOnInit(): void {
    
   }
+
+  getType(time: { value: number; type: TimeTypeEnum }): string {
+    switch (time.type) {
+      case TimeTypeEnum.MINUTE:
+        return `minute${time.value > 1 ? 's' : ''}`;
+      case TimeTypeEnum.HOUR:
+        return `hour${time.value > 1 ? 's' : ''}`;
+      case TimeTypeEnum.DAY:
+        return `day${time.value > 1 ? 's' : ''}`;
+      default:
+        time.type;
+    }
+  }
+
+  selectionChange(event: Event, ticketId: string) {
+    //@ts-ignore
+    const value: string = event.target.value;
+    this.handleQuantityChange.emit({value:+value, ticketId, isDonation: false});
+  }
+
+  inputOnchange(event: Event, ticketId: string) {
+    //@ts-ignore
+    const value: string = event.target.value;
+    this.handleQuantityChange.emit({value:+value, ticketId, isDonation:true});
+  }
+
+  validateSelection(): ISummaryItem[]{
+    this.showLoader = true;
+
+    setTimeout(() => {
+      this.showLoader = false
+    }, 1000);
+
+    return this.orderSummary.map((order)=> {
+      const ticket = this.currentEvent.tickets.find((ticket)=> ticket.id === order.ticketId);
+      if(ticket.type !== this.ticketType.DONATION && ticket.type !== this.ticketType.SALES && ticket.validation){
+        if(ticket.validation.available == 0){
+          order.waitlistQuantity = order.requestQuantity;
+          order.isWaitList = true;
+          return order
+        }
+
+        if(ticket.validation.available < order.requestQuantity){
+          order.availableQuantity = ticket.validation.available;
+          // order.waitlistQuantity = order.requestQuantity - order.availableQuantity;
+          // order.isWaitList = true;
+          return order
+        }
+        return order
+      }
+      order.availableQuantity = order.requestQuantity;
+      return order
+    })
+  }
+
+  getTicketSummary(ticketId: string): ISummaryItem{
+    return this.orderSummary.find((order)=> order.ticketId == ticketId) || {} as any
+  }
+}
