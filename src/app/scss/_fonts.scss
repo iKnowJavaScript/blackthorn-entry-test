@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+$materialIcons: "Material Icons", sans-serif;
+
+@font-face {
+  font-family: "Salesforce Sans";
+  src: url("/assets/fonts/SalesforceSans-Regular.ttf") format("truetype");
+}
+
+$SalesforceSans: "Salesforce Sans", sans-serif;
