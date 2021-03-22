@@ -37,15 +37,15 @@
         <div class="row">
           <div class="col-md-6 mb-0">
             <label for="firstName"></label>
-            <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="First name" value="" required="">
-            <div class="invalid-feedback">
+            <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="First name" [ngClass]="{'is-invalid': getFreeTicketForm.at([i]).get('firstName').touched && getFreeTicketForm.at([i]).get('firstName').errors}">
+            <div class="invalid-feedback" *ngIf="getFreeTicketForm.at([i]).get('firstName').touched && getFreeTicketForm.at([i]).get('firstName').errors">
               Valid first name is required.
             </div>
           </div>
           <div class="col-md-6 mb-0">
             <label for="lastName"></label>
-            <input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="Last name" value="" required="">
-            <div class="invalid-feedback">
+            <input type="text" class="form-control"  formControlName="lastName" id="lastName" placeholder="Last name"  [ngClass]="{'is-invalid': getFreeTicketForm.at([i]).get('lastName').touched && getFreeTicketForm.at([i]).get('lastName').errors}">
+            <div class="invalid-feedback" *ngIf="getFreeTicketForm.at([i]).get('lastName').touched && getFreeTicketForm.at([i]).get('lastName').errors">
               Valid last name is required.
             </div>
           </div>
@@ -53,9 +53,9 @@
 
         <div class="mb-0">
           <label for="email"></label>
-          <input type="email" class="form-control" formControlName="email" id="email" placeholder="Email">
-          <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
+          <input type="email" class="form-control" [ngClass]="{'is-invalid': getFreeTicketForm.at([i]).get('email').touched && getFreeTicketForm.at([i]).get('email').errors}" formControlName="email" id="email" placeholder="Email">
+          <div class="invalid-feedback" *ngIf="getFreeTicketForm.at([i]).get('email').touched && getFreeTicketForm.at([i]).get('email').errors">
+            Please enter a valid email address.
           </div>
         </div>
 
@@ -85,15 +85,15 @@
         <div class="row">
           <div class="col-md-6 mb-0">
             <label for="firstName"></label>
-            <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="First name" value="" required="">
-            <div class="invalid-feedback">
+            <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="First name" [ngClass]="{'is-invalid': getOtherTicketForm.at([i]).get('firstName').touched && getOtherTicketForm.at([i]).get('firstName').errors}">
+            <div class="invalid-feedback" *ngIf="getOtherTicketForm.at([i]).get('firstName').touched && getOtherTicketForm.at([i]).get('firstName').errors">
               Valid first name is required.
             </div>
           </div>
           <div class="col-md-6 mb-0">
             <label for="lastName"></label>
-            <input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="Last name" value="" required="">
-            <div class="invalid-feedback">
+            <input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="Last name" [ngClass]="{'is-invalid': getOtherTicketForm.at([i]).get('lastName').touched && getOtherTicketForm.at([i]).get('lastName').errors}">
+            <div class="invalid-feedback" *ngIf="getOtherTicketForm.at([i]).get('lastName').touched && getOtherTicketForm.at([i]).get('lastName').errors">
               Valid last name is required.
             </div>
           </div>
@@ -101,23 +101,26 @@
 
         <div class="mb-0">
           <label for="email"></label>
-          <input type="email" class="form-control" formControlName="email" id="email" placeholder="Email">
-          <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
+          <input type="email" class="form-control" formControlName="email" id="email" placeholder="Email" [ngClass]="{'is-invalid': getOtherTicketForm.at([i]).get('email').touched && getOtherTicketForm.at([i]).get('email').errors}">
+          <div class="invalid-feedback" *ngIf="getOtherTicketForm.at([i]).get('email').touched && getOtherTicketForm.at([i]).get('email').errors">
+            Please enter a valid email address.
           </div>
         </div>
 
         <div class="mb-0">
-          <label for="address2"></label>
+          <label for="job"></label>
           <input type="text" class="form-control" formControlName="job" id="job" placeholder="Job Title">
         </div>
         <div class="mb-0">
-          <label for="address2"></label>
+          <label for="company"></label>
           <input type="text" class="form-control" formControlName="company" id="company" placeholder="Company">
         </div>
         <div class="mb-0">
-          <label for="address2"></label>
-          <input type="text" class="form-control" formControlName="country" id="country" placeholder="Country">
+          <label for="country"></label>
+          <input type="text" class="form-control" formControlName="country" id="country" placeholder="Country" [ngClass]="{'is-invalid': getOtherTicketForm.at([i]).get('country').touched && getOtherTicketForm.at([i]).get('country').errors}">
+          <div class="invalid-feedback" *ngIf="getOtherTicketForm.at([i]).get('country').touched && getOtherTicketForm.at([i]).get('country').errors">
+            Please enter a valid ccountry.
+          </div>
         </div>
       </div>
     </div>
