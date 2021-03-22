@@ -5,11 +5,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { EventContainerComponent } from "./components/event-container/event-container.component";
+import { CheckoutTicketComponent } from "./components/checkout-ticket/checkout-ticket.component";
+import { LoaderComponent } from "./components/loader/loader.component";
+import { CheckoutFormComponent } from "./components/checkout-form/checkout-form.component";
 
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule,BrowserAnimationsModule, FormsModule, ReactiveFormsModule,],
+  declarations: [AppComponent, EventContainerComponent, CheckoutTicketComponent, LoaderComponent, CheckoutFormComponent],
+  imports: [BrowserModule,BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })

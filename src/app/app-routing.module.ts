@@ -1,15 +1,16 @@
 import { Routes, RouterModule, PreloadAllModules, ExtraOptions } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { EventContainerComponent } from './components/event-container/event-container.component';
 
 const routes: Routes = [
   {
     path:'',
-    // children:[
-    //   { path: '', redirectTo: '/summary', pathMatch: 'full' },
-    //   { path: 'summary', component:  },
+    children:[
+      { path: '', redirectTo: '/event', pathMatch: 'full' },
+      { path: 'event', component: EventContainerComponent },
 
-    //   { path: '**', redirectTo: '/summary' },
-    // ]
+      { path: '**', redirectTo: '/event' },
+    ]
   }
 
 ];
