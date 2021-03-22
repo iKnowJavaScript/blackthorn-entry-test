@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { title } from 'process';
 import {
   IEvent,
   EventEnum,
@@ -24,7 +23,7 @@ export class EventContainerComponent implements OnInit {
   currentCurrency = 'USD';
   orderSummary: ISummaryItem[] = [];
   allCheckoutStep = CheckoutStep;
-  currentCheckoutStep: CheckoutStep = CheckoutStep.SELECTION;
+  currentCheckoutStep: CheckoutStep = CheckoutStep.LIST_EVENT;
   taxRate = 4.1345;
   isTicketFormvalid = false;
   showLoader = false
@@ -157,9 +156,19 @@ export class EventContainerComponent implements OnInit {
     this.checkoutForm.onSubmit()
   }
 
+  handleEventChange(eventId){
+    this.currentEvent = this.events.find((event)=> event.id == eventId);
+    this.currentCurrency = this.currentEvent && this.currentEvent.currency;
+    this.currentCheckoutStep = CheckoutStep.SELECTION;
+  }
+
   handleTopNavigation(){
     if(this.currentCheckoutStep == this.allCheckoutStep.INFORMATION){
       this.currentCheckoutStep = this.allCheckoutStep.VALIDATION;
+    }
+
+    if(this.currentCheckoutStep == this.allCheckoutStep.SELECTION){
+      this.currentCheckoutStep = this.allCheckoutStep.LIST_EVENT;
     }
   }
 }

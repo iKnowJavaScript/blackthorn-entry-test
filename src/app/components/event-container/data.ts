@@ -4,6 +4,7 @@ export const data: { events: IEvent[] } = {
   events: [
     {
       name: 'CU - Alumni Weekend',
+      description:"An all weekend events for Central University Alumni", 
       currency: 'USD',
       id:"1",
       tickets: [

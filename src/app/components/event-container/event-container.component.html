@@ -1,5 +1,5 @@
 <app-loader *ngIf="showLoader"></app-loader>
-<div class="row" (click)="handleTopNavigation()">
+<div class="row" (click)="handleTopNavigation()" [ngClass]="{'d-none':currentCheckoutStep == allCheckoutStep.LIST_EVENT}">
   <div
     class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left mt-3 ml-4 back-navigation d-flex align-items-center"
   >
@@ -15,7 +15,7 @@
 <div class="content">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
+      <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12" [ngClass]="{'col-lg-12 col-md-12 col-sm-12':currentCheckoutStep == allCheckoutStep.LIST_EVENT}">
         <app-checkout-ticket
           [currentEvent]="currentEvent"
           [currentCurrency]="currentCurrency"
@@ -36,15 +36,13 @@
           (isFormValid)="handleInformationFormState($event)"
           *ngIf="currentCheckoutStep == allCheckoutStep.INFORMATION"
         ></app-checkout-form>
-                 <!-- [ngClass]="{'d-none':currentCheckoutStep != allCheckoutStep.INFORMATION}" -->
-          <!-- [ngClass]="{'d-none':
-          currentCheckoutStep != allCheckoutStep.SELECTION &&
-          currentCheckoutStep != allCheckoutStep.VALIDATION
-        }" -->
+
+        <app-list-event [events]="events" (handleEventChange)="handleEventChange($event)" *ngIf="currentCheckoutStep == allCheckoutStep.LIST_EVENT"></app-list-event>
       </div>
       <div
         class="col-lg-4 col-md-4 col-sm-5 col-xs-12"
         style="position: sticky; top: 0; height: 25vh"
+        [ngClass]="{'d-none':currentCheckoutStep == allCheckoutStep.LIST_EVENT}"
       >
         <div class="widget">
           <h4 class="widget-title">Order Summary</h4>

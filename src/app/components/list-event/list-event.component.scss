@@ -1,0 +1,41 @@
+@import "_color";
+
+.box {
+  background-color: #fff;
+  border-radius: 8px;
+  border: 2px solid #e9ebef;
+  padding: 50px;
+  margin-bottom: 40px;
+  &.clickable {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.plan-selection {
+  border-bottom: 1px solid #dddbda;
+  padding-bottom: 25px;
+  margin-bottom: 35px;
+  &:last-child {
+    border-bottom: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+
+  & p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+}
+
+span.price-discalimer {
+  font-size: 0.8rem;
+  &.danger {
+    color: $dangerColor;
+  }
+  &.warning {
+    color: $warningColor;
+  }
+}

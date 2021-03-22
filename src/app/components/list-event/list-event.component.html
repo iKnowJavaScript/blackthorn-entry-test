@@ -1,0 +1,16 @@
+<app-loader *ngIf="showLoader"></app-loader>
+<div class="col-lg-9 col-md-9 d-flex justify-content-center flex-column mx-auto">
+  <h3 class="text-center mb-3">Available Events</h3>
+  <ng-container *ngFor="let event of events; let i = index">
+    <div class="box clickable" (click)="handleSelection(event.id)">
+      <div class="plan-selection d-flex align-items-center">
+        <div class="plan-data">
+          <h5 class="widget-title">{{ event.name }}</h5>
+          <p class="plan-text">{{ event.description }}</p>
+          <span class="price-discalimer text-muted">> See all event packages and tickets</span>
+          <div class="quantity d-flex align-items-center"></div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

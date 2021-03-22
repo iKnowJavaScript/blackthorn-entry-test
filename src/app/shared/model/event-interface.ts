@@ -8,6 +8,7 @@ export enum CheckoutStep {
   SELECTION = "SELECTION",
   VALIDATION = "VALIDATION",
   INFORMATION = "INFORMATION",
+  LIST_EVENT = "LIST_EVENT",
 }
 
 export enum EventEnum {
@@ -19,6 +20,7 @@ export enum EventEnum {
 export interface IEvent {
   id: string,
   name: string;
+  description: string;
   currency: string;
   tickets: ITicket[];
 }

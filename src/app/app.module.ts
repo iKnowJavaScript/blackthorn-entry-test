@@ -9,10 +9,11 @@ import { EventContainerComponent } from "./components/event-container/event-cont
 import { CheckoutTicketComponent } from "./components/checkout-ticket/checkout-ticket.component";
 import { LoaderComponent } from "./components/loader/loader.component";
 import { CheckoutFormComponent } from "./components/checkout-form/checkout-form.component";
+import { ListEventComponent } from "./components/list-event/list-event.component";
 
 
 @NgModule({
-  declarations: [AppComponent, EventContainerComponent, CheckoutTicketComponent, LoaderComponent, CheckoutFormComponent],
+  declarations: [AppComponent, EventContainerComponent, CheckoutTicketComponent, LoaderComponent, CheckoutFormComponent, ListEventComponent],
   imports: [BrowserModule,BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
