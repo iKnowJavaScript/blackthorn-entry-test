@@ -11,3 +11,71 @@ body {
   background: $mainBackgroundColor;
   color: $black;
 }
+
+.custom-btn {
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 700;
+  padding: 12px 36px;
+  border-radius: 4px;
+  line-height: 2;
+  letter-spacing: 0px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  word-wrap: break-word;
+  white-space: normal !important;
+  background-color: $secondaryColor;
+  border: 0;
+  outline: none;
+  &::active,
+  &:focus {
+    background-color: $secondaryColor !important;
+  }
+}
+.btn-default {
+  background-color: $secondaryColor;
+  color: #fff;
+  border: 1px solid $secondaryColor;
+}
+.btn-default:hover {
+  background-color: lighten($secondaryColor, 70%);
+  color: #fff;
+  border: 1px solid lighten($secondaryColor, 70%);
+}
+.btn-default.focus,
+.btn-default:focus {
+  background-color: lighten($secondaryColor, 70%);
+  color: #fff;
+  border: 1px solid lighten($secondaryColor, 70%);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: $secondaryColor !important;
+}
+
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:hover {
+  color: #fff;
+  background-color: $secondaryColor !important;
+  border-color: $secondaryColor !important;
+  box-shadow: none;
+}
+
+.custom-secondary {
+  border: 1px solid $secondaryColor;
+  color: $secondaryColor;
+}
+
+.form-check-input:checked ~ .form-check-label::before {
+  color: #fff;
+  border-color: $secondaryColor;
+  background-color: red;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: $secondaryColor;
+  background-color: $secondaryColor;
+}
