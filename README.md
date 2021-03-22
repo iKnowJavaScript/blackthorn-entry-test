@@ -19,7 +19,7 @@ The mockup is simple enough and UI centric.
 
 ### Live
 
-- Visit here [Heroku](http://localhost:4200)
+- Visit here [Heroku](https://event-management-ui.herokuapp.com/)
 
 ### Installation
 
