@@ -1,0 +1,92 @@
+@import "_color";
+
+.box {
+  background-color: #fff;
+  border-radius: 8px;
+  border: 2px solid #e9ebef;
+  padding: 50px;
+  margin-bottom: 40px;
+}
+.box-title {
+  margin-bottom: 30px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+.plan-selection {
+  border-bottom: 1px solid #dddbda;
+  padding-bottom: 25px;
+  margin-bottom: 35px;
+  &:last-child {
+    border-bottom: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+
+  & p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+}
+
+div.quantity {
+  & > select.custom-select {
+    max-width: 70px;
+    &:focus {
+      outline: none !important;
+      box-shadow: none;
+      border: 0;
+      border: 1px solid #ced4da;
+    }
+  }
+
+  & > span.price {
+    font-size: 0.94rem;
+  }
+}
+
+.widget-title {
+  font-weight: 900;
+  letter-spacing: 1px;
+  display: table;
+  line-height: 1;
+}
+
+span.price-discalimer {
+  font-size: 0.8rem;
+  &.danger {
+    color: $dangerColor;
+  }
+  &.warning {
+    color: $warningColor;
+  }
+}
+
+div.donation-option {
+  & > button {
+    margin-right: 0.5rem;
+    display: inline-flex;
+    font-size: 0.8rem;
+  }
+  & .input-group {
+    & button {
+      border: 1px solid $warningColor;
+      border-top-left-radius: 0.25rem;
+      border-bottom-left-radius: 0.25rem;
+      font-size: 0.7rem;
+    }
+    & input {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.validation-message {
+  background: rgba(225, 218, 207, 0.31);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  & a {
+    text-decoration: underline;
+  }
+}
