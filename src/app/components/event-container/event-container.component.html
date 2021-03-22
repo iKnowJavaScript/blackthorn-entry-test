@@ -36,6 +36,11 @@
           (isFormValid)="handleInformationFormState($event)"
           *ngIf="currentCheckoutStep == allCheckoutStep.INFORMATION"
         ></app-checkout-form>
+                 <!-- [ngClass]="{'d-none':currentCheckoutStep != allCheckoutStep.INFORMATION}" -->
+          <!-- [ngClass]="{'d-none':
+          currentCheckoutStep != allCheckoutStep.SELECTION &&
+          currentCheckoutStep != allCheckoutStep.VALIDATION
+        }" -->
       </div>
       <div
         class="col-lg-4 col-md-4 col-sm-5 col-xs-12"

@@ -32,6 +32,16 @@ export class CheckoutFormComponent implements OnInit, OnDestroy {
   showLoader = false;
 
   ngOnInit(): void {
+    this.initForm()
+
+    this.subscription = this.form.valueChanges.subscribe(() => {
+      this.isFormValid.emit(this.form.valid)
+    }
+    );
+    this.isFormValid.emit(this.form.valid);
+  }
+
+  initForm(){
     this.form = this.fb.group({
       free: new FormArray([]),
       other: new FormArray([]),
@@ -64,12 +74,6 @@ export class CheckoutFormComponent implements OnInit, OnDestroy {
         }
       }
     });
-
-    this.subscription = this.form.valueChanges.subscribe(() => {
-      this.isFormValid.emit(this.form.valid)
-    }
-    );
-    this.isFormValid.emit(this.form.valid);
   }
 
   get formControls() {
