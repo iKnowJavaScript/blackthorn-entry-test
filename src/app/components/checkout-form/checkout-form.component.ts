@@ -37,6 +37,9 @@ export class CheckoutFormComponent implements OnInit, OnDestroy {
       other: new FormArray([]),
     });
 
+    let freeIndexCounter = 0;
+    let otherIndexCounter = 0;
+
     this.orderSummary.forEach((order) => {
       const ticket = this.currentEvent.tickets.find(
         (ticket) => ticket.id == order.ticketId
@@ -47,14 +50,16 @@ export class CheckoutFormComponent implements OnInit, OnDestroy {
           //free ticket
           const orderCount = order.availableQuantity + order.waitlistQuantity || 0
           for (let index = 0; index < orderCount; index++) {
+            this.formHeading[`${freeIndexCounter}__free`] = {title: order.title, attendee: freeIndexCounter + 1};
             this.getFreeTicketForm.push(this.createFreeTicket());
-            this.formHeading[`${index}__free`] = order.title;
+            freeIndexCounter += 1;
           }
         } else {
           const orderCount = order.availableQuantity + order.waitlistQuantity || 0
           for (let index = 0; index < orderCount; index++) {
-            this.formHeading[`${index}__other`] = order.title;
+            this.formHeading[`${otherIndexCounter}__other`] = {title: order.title, attendee: otherIndexCounter + 1};
             this.getOtherTicketForm.push(this.createMainTicket());
+            otherIndexCounter += 1;
           }
         }
       }
@@ -64,7 +69,7 @@ export class CheckoutFormComponent implements OnInit, OnDestroy {
       this.isFormValid.emit(this.form.valid)
     }
     );
-    this.isFormValid.emit(this.form.valid)
+    this.isFormValid.emit(this.form.valid);
   }
 
   get formControls() {

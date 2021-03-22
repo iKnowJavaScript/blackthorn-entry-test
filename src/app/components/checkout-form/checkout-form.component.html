@@ -33,7 +33,7 @@
   <form class="needs-validation" novalidate="" [formGroup]="form">
   <div class="row form-row" *ngFor="let control of getFreeTicketForm.controls; let i = index;" [formGroup]="control">
     <div class="col-md-12">
-      <p class="mb-0">{{formHeading[i + "__free"]}}</p>
+      <p class="mb-0">Attendee {{ formHeading[i + "__free"]["attendee"] }} - {{ formHeading[i + "__free"]["title"] }}</p>
         <div class="row">
           <div class="col-md-6 mb-0">
             <label for="firstName"></label>
@@ -81,7 +81,7 @@
 
   <div class="row form-row" *ngFor="let control of getOtherTicketForm.controls; let i = index;" [formGroup]="control">
     <div class="col-md-12">
-      <p class="mb-0">{{formHeading[i + "__other"]}}</p>
+      <p class="mb-0">Attendee {{ formHeading[i + "__other"]["attendee"] }} - {{ formHeading[i + "__other"]["title"] }}</p>
         <div class="row">
           <div class="col-md-6 mb-0">
             <label for="firstName"></label>
