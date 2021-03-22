@@ -60,14 +60,14 @@ export class CheckoutFormComponent implements OnInit, OnDestroy {
           //free ticket
           const orderCount = order.availableQuantity + order.waitlistQuantity || 0
           for (let index = 0; index < orderCount; index++) {
-            this.formHeading[`${freeIndexCounter}__free`] = {title: order.title, attendee: freeIndexCounter + 1};
+            this.formHeading[`${freeIndexCounter}__free`] = {title: order.title, attendee: index + 1};
             this.getFreeTicketForm.push(this.createFreeTicket());
             freeIndexCounter += 1;
           }
         } else {
           const orderCount = order.availableQuantity + order.waitlistQuantity || 0
           for (let index = 0; index < orderCount; index++) {
-            this.formHeading[`${otherIndexCounter}__other`] = {title: order.title, attendee: otherIndexCounter + 1};
+            this.formHeading[`${otherIndexCounter}__other`] = {title: order.title, attendee: index + 1};
             this.getOtherTicketForm.push(this.createMainTicket());
             otherIndexCounter += 1;
           }
