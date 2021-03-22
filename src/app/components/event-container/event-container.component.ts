@@ -7,6 +7,7 @@ import {
   ISummaryItem,
   CheckoutStep,
 } from 'src/app/shared/model/event-interface';
+import { CheckoutFormComponent } from '../checkout-form/checkout-form.component';
 import { CheckoutTicketComponent } from '../checkout-ticket/checkout-ticket.component';
 import { data } from './data';
 
@@ -23,10 +24,12 @@ export class EventContainerComponent implements OnInit {
   currentCurrency = 'USD';
   orderSummary: ISummaryItem[] = [];
   allCheckoutStep = CheckoutStep;
-  currentCheckoutStep: CheckoutStep = CheckoutStep.INFORMATION;
+  currentCheckoutStep: CheckoutStep = CheckoutStep.SELECTION;
   taxRate = 4.1345;
+  isTicketFormvalid = false;
+  showLoader = false
   @ViewChild('checkoutTicket', { static: false }) checkoutTicket: CheckoutTicketComponent;
-
+  @ViewChild('checkoutForm', { static: false }) checkoutForm: CheckoutFormComponent;
 
   ngOnInit(): void {
     if (this.currentEvent && this.currentEvent.currency) {
@@ -134,13 +137,29 @@ export class EventContainerComponent implements OnInit {
         break;
 
       case CheckoutStep.VALIDATION:
+        this.showLoader = true;
         setTimeout(() => {
+          this.showLoader = false;
           this.currentCheckoutStep = CheckoutStep.INFORMATION;
-        }, 200);
+        }, 1000);
         break;
 
       default:
         break;
+    }
+  }
+
+  handleInformationFormState(value: boolean){
+    this.isTicketFormvalid = value
+  }
+
+  validateForm(){
+    this.checkoutForm.onSubmit()
+  }
+
+  handleTopNavigation(){
+    if(this.currentCheckoutStep == this.allCheckoutStep.INFORMATION){
+      this.currentCheckoutStep = this.allCheckoutStep.VALIDATION;
     }
   }
 }

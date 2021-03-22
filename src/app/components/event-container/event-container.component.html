@@ -1,8 +1,14 @@
-<div class="row">
+<app-loader *ngIf="showLoader"></app-loader>
+<div class="row" (click)="handleTopNavigation()">
   <div
     class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left mt-3 ml-4 back-navigation d-flex align-items-center"
   >
-    <span>&#8592;</span> {{ currentEvent.name }}
+    <span>&#8592;</span>
+    {{
+      currentCheckoutStep === allCheckoutStep.INFORMATION
+        ? "Back"
+        : currentEvent.name
+    }}
   </div>
 </div>
 
@@ -25,10 +31,16 @@
         ></app-checkout-ticket>
         <app-checkout-form
           [currentEvent]="currentEvent"
+          #checkoutForm
+          [orderSummary]="orderSummary"
+          (isFormValid)="handleInformationFormState($event)"
           *ngIf="currentCheckoutStep == allCheckoutStep.INFORMATION"
         ></app-checkout-form>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+      <div
+        class="col-lg-4 col-md-4 col-sm-5 col-xs-12"
+        style="position: sticky; top: 0; height: 25vh"
+      >
         <div class="widget">
           <h4 class="widget-title">Order Summary</h4>
           <div class="summary-block">
@@ -138,10 +150,19 @@
           </div>
         </div>
         <button
+          *ngIf="currentCheckoutStep !== allCheckoutStep.INFORMATION"
           class="custom-btn btn-primary btn-lg mb30 w-100"
           (click)="gotoNextStep()"
         >
           Checkout
+        </button>
+        <button
+          *ngIf="currentCheckoutStep === allCheckoutStep.INFORMATION"
+          class="custom-btn btn-primary btn-lg mb30 w-100"
+          (click)="validateForm()"
+          [disabled]="!isTicketFormvalid"
+        >
+          Review Sessions
         </button>
       </div>
     </div>
