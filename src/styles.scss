@@ -1,19 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
-@import "color";
-@import "mixins";
-@import "fonts";
-@import "break-points";
+@import 'color';
+@import 'fonts';
+@import '_utils';
 
 html,
 body {
   font-family: $SalesforceSans;
   background: $mainBackgroundColor;
   color: $black;
+  font-size: $fontSize;
 }
 
 .custom-btn {
-  font-size: 16px;
+  font-size: $fontSize;
   text-transform: capitalize;
   font-weight: 700;
   padding: 12px 36px;
@@ -35,18 +34,18 @@ body {
 }
 .btn-default {
   background-color: $secondaryColor;
-  color: #fff;
+  color: $white;
   border: 1px solid $secondaryColor;
 }
 .btn-default:hover {
   background-color: lighten($secondaryColor, 70%);
-  color: #fff;
+  color: $white;
   border: 1px solid lighten($secondaryColor, 70%);
 }
 .btn-default.focus,
 .btn-default:focus {
   background-color: lighten($secondaryColor, 70%);
-  color: #fff;
+  color: $white;
   border: 1px solid lighten($secondaryColor, 70%);
 }
 
@@ -59,7 +58,7 @@ body {
 .btn-primary:hover,
 .btn-primary.disabled,
 .btn-primary:disabled {
-  color: #fff;
+  color: $white;
   background-color: $secondaryColor !important;
   border-color: $secondaryColor !important;
   box-shadow: none;
@@ -77,13 +76,22 @@ body {
 }
 
 .form-check-input:checked ~ .form-check-label::before {
-  color: #fff;
+  color: $white;
   border-color: $secondaryColor;
   background-color: red;
 }
 
 .custom-control-input:checked ~ .custom-control-label::before {
-  color: #fff;
+  color: $white;
   border-color: $secondaryColor;
   background-color: $secondaryColor;
+}
+
+.d-none {
+  display: none;
+}
+
+.mute-text,
+.text-muted {
+  color: $grey;
 }
