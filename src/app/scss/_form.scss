@@ -1,0 +1,98 @@
+@import '_color';
+
+input.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: $white;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &:focus {
+    outline: none;
+  }
+}
+
+select.custom-select {
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: $white
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+    right 0.75rem center/8px 10px no-repeat;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  // margin-left: 1rem !important;
+}
+
+/* CAUTION: IE hackery ahead */
+select::-ms-expand {
+  display: none; /* remove default arrow on ie10 and ie11 */
+}
+
+/* target Internet Explorer 9 to undo the custom arrow */
+@media screen and (min-width: 0\0) {
+  select {
+    background: none\9;
+    padding: 5px\9;
+  }
+}
+
+input {
+  &:focus {
+    outline: none;
+  }
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+div.input-group {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  & > .input-group-append {
+    margin-left: -1px;
+    display: flex;
+    & > button {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  & > .form-control:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.is-invalid {
+  border: 1.5px solid $inputErrorColor !important;
+}
+
+.is-invalid ~ label {
+  color: $inputErrorColor !important;
+}
+
+.invalid-feedback {
+  display: block;
+  color: $inputErrorColor;
+  position: relative;
+  margin-top: 0.3rem;
+  font-size: 80%;
+}
