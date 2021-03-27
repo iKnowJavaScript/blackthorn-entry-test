@@ -150,11 +150,11 @@ export class CheckoutTicketComponent implements OnInit {
   }
 
   removeWishlist(ticketId: string, formIndex: number) {
-    this.getTicketForm.at(formIndex).get('quantity').setValue(0)
     const orderSummary = this.getOrderSummary.map((order) => {
       if (order.ticketId == ticketId) {
         order.requestQuantity = order.requestQuantity - order.waitlistQuantity;
         order.waitlistQuantity = 0;
+        this.getTicketForm.at(formIndex).get('quantity').setValue(order.availableQuantity)
         order.isWaitList = false;
         return order;
       }

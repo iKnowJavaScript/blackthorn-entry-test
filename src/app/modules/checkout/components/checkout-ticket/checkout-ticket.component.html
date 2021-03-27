@@ -60,7 +60,7 @@
                       >
                     </div>
                     <div class="validation-message" *ngIf="getTicketSummary(ticket.id).waitlistQuantity > 0">
-                      {{ getTicketSummary(ticket.id).requestQuantity }} Tickets Waitlisted.
+                      {{ getTicketSummary(ticket.id).waitlistQuantity }} Tickets Waitlisted.
                       <a href="javascript:void(0);" (click)="removeWishlist(ticket.id, i)">Cancel</a>
                     </div>
                   </ng-container>
