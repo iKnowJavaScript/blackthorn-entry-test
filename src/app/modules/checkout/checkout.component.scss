@@ -1,0 +1,23 @@
+@import '_color';
+
+.content {
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+.back-navigation {
+  cursor: pointer;
+  text-align: left;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  & > span {
+    font-size: 1.5rem;
+    display: inline-flex;
+    margin-right: 0.5rem;
+  }
+  &:hover {
+    opacity: 0.6;
+  }
+}

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EventContainerComponent } from './event-container.component';
+import { CheckoutComponentComponent } from './checkout.component';
 
-describe('EventContainerComponent', () => {
-  let component: EventContainerComponent;
-  let fixture: ComponentFixture<EventContainerComponent>;
+describe('CheckoutComponentComponent', () => {
+  let component: CheckoutComponentComponent;
+  let fixture: ComponentFixture<CheckoutComponentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EventContainerComponent ]
+      declarations: [ CheckoutComponentComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventContainerComponent);
+    fixture = TestBed.createComponent(CheckoutComponentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

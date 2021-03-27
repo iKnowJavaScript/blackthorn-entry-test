@@ -1,6 +1,6 @@
-import { EventEnum, IEvent, TimeTypeEnum } from "src/app/shared/model/event-interface";
+import { EventEnum, IEvent, TimeTypeEnum } from "../models/event-interface";
 
-export const data: { events: IEvent[] } = {
+export const EVENTS: { events: IEvent[] } = {
   events: [
     {
       name: 'CU - Alumni Weekend',

@@ -1,21 +1,4 @@
-@import "_color";
-
-.form-row,
-.notice-row {
-  background-color: #fff;
-  border-radius: 8px;
-  border: 2px solid #e9ebef;
-  padding: 40px;
-  margin-bottom: 30px;
-}
-
-.notice-row {
-  padding: 20px;
-}
-
-.notice-skip {
-  font-size: 0.8rem;
-}
+@import '_color';
 
 .custom-stepper {
   width: 100%;
@@ -38,11 +21,6 @@
   font-weight: bold;
 }
 
-// .custom-stepper .custom-step::before {
-//   content: "\2609";
-//   position: absolute;
-//   top: -10px;
-// }
 .custom-stepper .custom-step.active::after {
   color: $secondaryColor;
 }

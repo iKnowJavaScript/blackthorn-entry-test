@@ -1,0 +1,163 @@
+<div class="row">
+  <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
+    <form novalidate="" [formGroup]="form">
+      <div class="box">
+        <ng-container *ngFor="let ticket of getCurrentEvent.tickets; let i = index">
+          <ng-container [ngSwitch]="ticket.type">
+            <ng-container *ngSwitchDefault>
+              <div class="plan-selection" [formGroup]="getTicketForm.get([i])">
+                <div class="plan-data">
+                  <h5 class="widget-title">{{ ticket.title }}</h5>
+                  <p class="plan-text">{{ ticket.description }}</p>
+                  <ng-container *ngIf="ticket.timeTillEnd && ticket.timeTillEnd.value">
+                    <span
+                      class="price-discalimer"
+                      [ngClass]="{
+                        danger: ticket.timeTillEnd.type === 'MINUTE' || ticket.timeTillEnd.type === 'HOUR',
+                        warning: ticket.timeTillEnd.type !== 'MINUTE' && ticket.timeTillEnd.type !== 'HOUR'
+                      }"
+                      >Sales end in {{ ticket.timeTillEnd.value }} {{ getType(ticket.timeTillEnd) }}</span
+                    >
+                  </ng-container>
+                  <div class="plan-quantity">
+                    <span class="price">{{
+                      ticket.price == 0 ? 'Free' : (ticket.price | currency: getCurrentEvent.currency)
+                    }}</span>
+                    <select
+                      class="custom-select"
+                      [id]="'quantity' + i"
+                      formControlName="quantity"
+                      (change)="selectionChange($event, ticket.id)"
+                    >
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                  <ng-container *ngIf="ticket.validation">
+                    <div
+                      class="validation-message"
+                      *ngIf="getTicketSummary(ticket.id).requestQuantity < ticket.validation.available"
+                    >
+                      Only {{ ticket.validation.available }} tickets available.
+                      <!-- <a href="javascript:void(0);">Join waitlist</a> -->
+                    </div>
+                    <div
+                      class="validation-message"
+                      *ngIf="
+                        getTicketSummary(ticket.id).requestQuantity >
+                          ticket.validation.available + getTicketSummary(ticket.id).waitlistQuantity &&
+                        ticket.validation.available != 0
+                      "
+                    >
+                      {{ ticket.validation.available }} Ticket Added to cart. Want to join the waitlist for
+                      {{ getTicketSummary(ticket.id).requestQuantity - ticket.validation.available }} tickets?
+                      <a href="javascript:void(0);" (click)="joinWaitlist(ticket.id, ticket.validation.available)"
+                        >Join waitlist</a
+                      >
+                    </div>
+                    <div class="validation-message" *ngIf="getTicketSummary(ticket.id).waitlistQuantity > 0">
+                      {{ getTicketSummary(ticket.id).waitlistQuantity }} Tickets Waitlisted.
+                      <a href="javascript:void(0);" (click)="removeWishlist(ticket.id, i)">Cancel</a>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="ticketType.DONATION">
+              <div class="plan-selection" [formGroup]="getTicketForm.get([i])">
+                <div class="plan-data">
+                  <h5 class="widget-title">{{ ticket.title }}</h5>
+                  <p class="plan-text">{{ ticket.description }}</p>
+                  <ng-container *ngIf="ticket.timeTillEnd && ticket.timeTillEnd.value">
+                    <span
+                      class="price-discalimer"
+                      [ngClass]="{
+                        danger: ticket.timeTillEnd.type === 'MINUTE' || ticket.timeTillEnd.type === 'HOUR',
+                        warning: ticket.timeTillEnd.type !== 'MINUTE' && ticket.timeTillEnd.type !== 'HOUR'
+                      }"
+                      >Sales end in {{ ticket.timeTillEnd.value }} {{ getType(ticket.timeTillEnd) }}</span
+                    >
+                  </ng-container>
+                  <span class="price-discalimer">I want to donate</span>
+                  <div class="plan-quantity">
+                    <div class="donation-option">
+                      <button
+                        type="button"
+                        [className]="
+                          getTicketSummary(ticket.id).price === price
+                            ? 'btn btn-secondary btn-sm'
+                            : 'btn btn-outline-secondary'
+                        "
+                        *ngFor="let price of ticket.options"
+                        (click)="handleQuantityChange(price, ticket.id, true)"
+                      >
+                        {{ price | currency: getCurrentEvent.currency }}
+                      </button>
+                      <div class="donation input-group">
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-light">$</button>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter Amount"
+                          (input)="inputOnchange($event, ticket.id)"
+                          formControlName="price"
+                          [id]="'price' + i"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="ticketType.SALES">
+              <div class="plan-selection" [formGroup]="getTicketForm.get([i])">
+                <div class="plan-asset">
+                  <img [src]="ticket.imageUrl" alt="book" />
+                </div>
+                <div class="plan-data">
+                  <h5 class="widget-title">{{ ticket.title }}</h5>
+                  <p class="plan-text">{{ ticket.description }}</p>
+                  <div class="plan-quantity">
+                    <span class="price">{{
+                      ticket.price == 0 ? 'Free' : (ticket.price | currency: getCurrentEvent.currency)
+                    }}</span>
+                    <select
+                      class="custom-select"
+                      [id]="'quantity' + i"
+                      formControlName="quantity"
+                      (change)="selectionChange($event, ticket.id)"
+                    >
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+    </form>
+  </div>
+  <div class="col-lg-4 col-md-4 col-xs-12" style="position: sticky; top: 0; height: 25vh">
+    <app-order-summary
+      [orderSummary]="getOrderSummary"
+      [currentCurrency]="getCurrentEvent.currency"
+      (triggerValidation)="checkout()"
+      [submitText]="'Checkout'"
+      [isFormValid]="getOrderSummary && getOrderSummary.length"
+    ></app-order-summary>
+  </div>
+</div>
