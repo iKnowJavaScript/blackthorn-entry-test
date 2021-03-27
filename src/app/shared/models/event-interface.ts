@@ -5,10 +5,8 @@ export enum TimeTypeEnum {
 }
 
 export enum CheckoutStep {
-  SELECTION = "SELECTION",
-  VALIDATION = "VALIDATION",
-  INFORMATION = "INFORMATION",
-  LIST_EVENT = "LIST_EVENT",
+  TICKET_SELECTION = "TICKET_SELECTION",
+  CHECKOUT = "CHECKOUT",
 }
 
 export enum EventEnum {
