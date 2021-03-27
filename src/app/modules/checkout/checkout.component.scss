@@ -1,4 +1,5 @@
-@import "_color";
+@import '_color';
+@import 'layout/checkout';
 
 .content {
   padding-top: 60px;
@@ -28,50 +29,6 @@
   border-color: $primaryColor;
 }
 
-.term-price {
-  bottom: 18px;
-}
-.secure-price {
-  bottom: 68px;
-}
-.summary-block {
-  border-bottom: 1px solid #dddbda;
-  font-size: 0.9rem;
-}
-.summary-block:last-child {
-  border-bottom: 0px;
-}
-.summary-content {
-  padding: 12px 0px;
-}
-.summary-price {
-  letter-spacing: -1px;
-  margin-bottom: 0px;
-  display: inline-block;
-  float: right;
-}
-
-.summary-head {
-  width: 150px;
-}
-
-.widget {
-  margin-bottom: 30px;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 6px;
-}
-.widget:last-child {
-  border-bottom: 0px;
-}
-
-.widget-title {
-  font-weight: 900;
-  letter-spacing: 1px;
-  display: table;
-  line-height: 1;
-}
-
 .back-navigation {
   cursor: pointer;
   & > span {
@@ -82,8 +39,4 @@
   &:hover {
     opacity: 0.6;
   }
-}
-
-.mute-text {
-  color: #8f929a;
 }

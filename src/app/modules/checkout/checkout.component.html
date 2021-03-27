@@ -1,0 +1,12 @@
+<div class="row" (click)="navigateBack()">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left mt-3 ml-4 back-navigation d-flex align-items-center">
+    <span>&#8592;</span>
+    {{ currentCheckoutStep === allCheckoutStep.CHECKOUT ? 'Back' : currentEvent.name }}
+  </div>
+</div>
+
+<div class="content">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
