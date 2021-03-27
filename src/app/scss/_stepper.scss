@@ -1,0 +1,44 @@
+@import '_color';
+
+.custom-stepper {
+  width: 100%;
+  height: 2px;
+  display: flex;
+  position: relative;
+}
+
+.custom-stepper .custom-step {
+  display: flex;
+  flex: 1;
+  opacity: 0.2;
+  background-color: $secondaryColor;
+}
+
+.custom-stepper .custom-step::after {
+  content: attr(aria-label);
+  margin-top: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.custom-stepper .custom-step.active::after {
+  color: $secondaryColor;
+}
+.custom-stepper .custom-step.done::after {
+  color: $secondaryColor;
+  opacity: 0.4;
+}
+
+.custom-stepper .custom-step.active {
+  opacity: 1 !important;
+  height: inherit;
+  background-color: $secondaryColor !important;
+}
+@media (max-width: 767px) {
+  .custom-stepper .custom-step:not(.active)::after {
+    visibility: hidden !important;
+  }
+  .custom-stepper .custom-step.done::after {
+    visibility: hidden !important;
+  }
+}
