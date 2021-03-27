@@ -5,7 +5,7 @@
         <ng-container *ngFor="let ticket of getCurrentEvent.tickets; let i = index">
           <ng-container [ngSwitch]="ticket.type">
             <ng-container *ngSwitchDefault>
-              <div class="plan-selection d-flex align-items-center" [formGroup]="getTicketForm.get([i])">
+              <div class="plan-selection" [formGroup]="getTicketForm.get([i])">
                 <div class="plan-data">
                   <h5 class="widget-title">{{ ticket.title }}</h5>
                   <p class="plan-text">{{ ticket.description }}</p>
@@ -19,12 +19,12 @@
                       >Sales end in {{ ticket.timeTillEnd.value }} {{ getType(ticket.timeTillEnd) }}</span
                     >
                   </ng-container>
-                  <div class="quantity d-flex align-items-center mt-3">
+                  <div class="plan-quantity">
                     <span class="price">{{
                       ticket.price == 0 ? 'Free' : (ticket.price | currency: getCurrentEvent.currency)
                     }}</span>
                     <select
-                      class="custom-select d-block ml-3"
+                      class="custom-select"
                       [id]="'quantity' + i"
                       formControlName="quantity"
                       (change)="selectionChange($event, ticket.id)"
@@ -43,7 +43,7 @@
                       *ngIf="getTicketSummary(ticket.id).requestQuantity < ticket.validation.available"
                     >
                       Only {{ ticket.validation.available }} tickets available.
-                      <a href="#" class="d-inline-flex my">Join waitlist</a>
+                      <a href="#">Join waitlist</a>
                     </div>
                     <div
                       class="validation-message"
@@ -54,14 +54,14 @@
                     >
                       {{ ticket.validation.available }} Ticket Added to cart. Want to join the waitlist for
                       {{ getTicketSummary(ticket.id).requestQuantity - ticket.validation.available }} tickets?
-                      <a href="#" class="d-inline-flex my">Join waitlist</a>
+                      <a href="#">Join waitlist</a>
                     </div>
                     <div
                       class="validation-message"
                       *ngIf="ticket.validation.available == 0 && getTicketSummary(ticket.id).requestQuantity"
                     >
                       {{ getTicketSummary(ticket.id).requestQuantity }} Tickets Waitlisted.
-                      <a href="#" class="d-inline-flex my" (click)="removeWishlist(ticket.id)">Cancel</a>
+                      <a href="#" (click)="removeWishlist(ticket.id)">Cancel</a>
                     </div>
                   </ng-container>
                 </div>
@@ -69,7 +69,7 @@
             </ng-container>
 
             <ng-container *ngSwitchCase="ticketType.DONATION">
-              <div class="plan-selection d-flex align-items-center" [formGroup]="getTicketForm.get([i])">
+              <div class="plan-selection" [formGroup]="getTicketForm.get([i])">
                 <div class="plan-data">
                   <h5 class="widget-title">{{ ticket.title }}</h5>
                   <p class="plan-text">{{ ticket.description }}</p>
@@ -84,8 +84,8 @@
                     >
                   </ng-container>
                   <span class="price-discalimer">I want to donate</span>
-                  <div class="quantity d-flex align-items-center">
-                    <div class="donation-option d-flex align-items-center">
+                  <div class="plan-quantity">
+                    <div class="donation-option">
                       <button
                         type="button"
                         [className]="
@@ -118,19 +118,19 @@
             </ng-container>
 
             <ng-container *ngSwitchCase="ticketType.SALES">
-              <div class="plan-selection d-flex align-items-center" [formGroup]="getTicketForm.get([i])">
-                <div class="plan-asset mr-4">
+              <div class="plan-selection" [formGroup]="getTicketForm.get([i])">
+                <div class="plan-asset">
                   <img [src]="ticket.imageUrl" alt="book" />
                 </div>
                 <div class="plan-data">
                   <h5 class="widget-title">{{ ticket.title }}</h5>
                   <p class="plan-text">{{ ticket.description }}</p>
-                  <div class="quantity d-flex align-items-center mt-3">
+                  <div class="plan-quantity">
                     <span class="price">{{
                       ticket.price == 0 ? 'Free' : (ticket.price | currency: getCurrentEvent.currency)
                     }}</span>
                     <select
-                      class="custom-select d-block ml-3"
+                      class="custom-select"
                       [id]="'quantity' + i"
                       formControlName="quantity"
                       (change)="selectionChange($event, ticket.id)"

@@ -4,7 +4,7 @@
     <div class="summary-block">
       <ng-container *ngFor="let item of orderSummary">
         <div class="summary-content">
-          <div class="summary-head d-inline-block">
+          <div class="summary-head">
             <span class="summary-title">{{ item.availableQuantity }}x {{ item.title }}</span>
           </div>
           <div class="summary-price">
@@ -17,7 +17,7 @@
 
       <ng-container *ngFor="let item of orderSummary">
         <div class="summary-content" *ngIf="item.isWaitList">
-          <div class="summary-head d-inline-block">
+          <div class="summary-head">
             <span class="summary-title mute-text">{{ item.waitlistQuantity }}x {{ item.title }}</span>
           </div>
           <div class="summary-price">
@@ -30,7 +30,7 @@
     </div>
     <div class="summary-block">
       <div class="summary-content pb-0">
-        <div class="summary-head d-inline-block">
+        <div class="summary-head">
           <h6 class="summary-title">Subtotal</h6>
         </div>
         <div class="summary-price">
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="summary-content pb-0">
-        <div class="summary-head d-inline-block">
+        <div class="summary-head">
           <h6 class="summary-title">Taxes</h6>
         </div>
         <div class="summary-price">
@@ -48,7 +48,7 @@
     </div>
     <div class="summary-block">
       <div class="summary-content">
-        <div class="summary-head d-inline-block">
+        <div class="summary-head">
           <h5 class="summary-title">Total</h5>
         </div>
         <div class="summary-price">
@@ -58,10 +58,10 @@
         </div>
       </div>
     </div>
-    <a href="#" class="d-inline-flex my-4">Have a promo code?</a>
+    <a href="#" class="promo-text">Have a promo code?</a>
     <div class="input-group" *ngIf="orderSummary && orderSummary.length">
       <input type="text" class="form-control" placeholder="Promo code" />
-      <button type="submit" class="btn custom-secondary ml-2">Redeem</button>
+      <button type="submit" class="btn custom-secondary">Redeem</button>
     </div>
   </div>
   <button class="custom-btn btn-primary btn-lg mb30 w-100" [disabled]="!isFormValid" (click)="triggerValidation.emit()">

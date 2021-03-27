@@ -1,4 +1,6 @@
-@import "_color";
+@import '_color';
+@import '_form';
+@import '_stepper';
 
 .form-row,
 .notice-row {
@@ -13,54 +15,43 @@
   padding: 20px;
 }
 
-.notice-skip {
+.ticket-card {
   font-size: 0.8rem;
-}
-
-.custom-stepper {
-  width: 100%;
-  height: 2px;
   display: flex;
-  position: relative;
-}
+  justify-content: space-between;
+  align-items: center;
 
-.custom-stepper .custom-step {
-  display: flex;
-  flex: 1;
-  opacity: 0.2;
-  background-color: $secondaryColor;
-}
+  & > .ticket-description {
+    display: flex;
+    & > .ticket-asset {
+      margin-right: 2rem;
+      img {
+        object-fit: cover;
+      }
+    }
 
-.custom-stepper .custom-step::after {
-  content: attr(aria-label);
-  margin-top: 15px;
-  font-size: 0.85rem;
-  font-weight: bold;
-}
-
-// .custom-stepper .custom-step::before {
-//   content: "\2609";
-//   position: absolute;
-//   top: -10px;
-// }
-.custom-stepper .custom-step.active::after {
-  color: $secondaryColor;
-}
-.custom-stepper .custom-step.done::after {
-  color: $secondaryColor;
-  opacity: 0.4;
-}
-
-.custom-stepper .custom-step.active {
-  opacity: 1 !important;
-  height: inherit;
-  background-color: $secondaryColor !important;
-}
-@media (max-width: 767px) {
-  .custom-stepper .custom-step:not(.active)::after {
-    visibility: hidden !important;
+    & > .ticket-text {
+      display: flex;
+      flex-direction: column;
+    }
   }
-  .custom-stepper .custom-step.done::after {
-    visibility: hidden !important;
+
+  & > a.link {
+    display: inline-flex;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.my-3 {
+  margin-bottom: 1rem !important;
+  margin-top: 1rem !important;
 }

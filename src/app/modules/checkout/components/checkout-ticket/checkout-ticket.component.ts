@@ -168,8 +168,6 @@ export class CheckoutTicketComponent implements OnInit {
 
         if (ticket.validation.available < order.requestQuantity) {
           order.availableQuantity = ticket.validation.available;
-          // order.waitlistQuantity = order.requestQuantity - order.availableQuantity;
-          // order.isWaitList = true;
           return order;
         }
         return order;

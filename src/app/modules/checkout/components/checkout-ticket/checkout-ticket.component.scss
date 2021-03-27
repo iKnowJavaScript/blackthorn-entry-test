@@ -1,4 +1,5 @@
-@import "_color";
+@import '_color';
+@import '_form';
 
 .box {
   background-color: #fff;
@@ -16,31 +17,61 @@
   border-bottom: 1px solid #dddbda;
   padding-bottom: 25px;
   margin-bottom: 35px;
+  display: flex;
+  align-items: center;
   &:last-child {
     border-bottom: 0px;
     margin-bottom: 0px;
     padding-bottom: 0px;
   }
 
+  .plan-asset {
+    margin-right: 1.5rem;
+    & img {
+      object-fit: cover;
+    }
+  }
+
   & p {
     margin-top: 0;
     margin-bottom: 0.5rem;
   }
-}
 
-div.quantity {
-  & > select.custom-select {
-    max-width: 70px;
-    &:focus {
-      outline: none !important;
-      box-shadow: none;
-      border: 0;
-      border: 1px solid #ced4da;
+  .plan-quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    & > select.custom-select {
+      max-width: 70px;
+      display: block;
+      margin-left: 1rem;
+      &:focus {
+        outline: none !important;
+        box-shadow: none;
+        border: 0;
+        border: 1px solid #ced4da;
+      }
+    }
+
+    & > .donation-option {
+      display: flex;
+      align-items: center;
+    }
+
+    & > span.price {
+      font-size: 0.94rem;
     }
   }
 
-  & > span.price {
-    font-size: 0.94rem;
+  .validation-message {
+    background: rgba(225, 218, 207, 0.31);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    & a {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -77,16 +108,5 @@ div.donation-option {
     & input {
       font-size: 0.7rem;
     }
-  }
-}
-
-.validation-message {
-  background: rgba(225, 218, 207, 0.31);
-  border-radius: 4px;
-  font-size: 0.8rem;
-  padding: 0.5rem;
-  margin-top: 1rem;
-  & a {
-    text-decoration: underline;
   }
 }
