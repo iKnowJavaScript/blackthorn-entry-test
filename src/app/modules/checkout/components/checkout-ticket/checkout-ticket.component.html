@@ -43,25 +43,25 @@
                       *ngIf="getTicketSummary(ticket.id).requestQuantity < ticket.validation.available"
                     >
                       Only {{ ticket.validation.available }} tickets available.
-                      <a href="#">Join waitlist</a>
+                      <!-- <a href="javascript:void(0);">Join waitlist</a> -->
                     </div>
                     <div
                       class="validation-message"
                       *ngIf="
-                        getTicketSummary(ticket.id).requestQuantity > ticket.validation.available &&
+                        getTicketSummary(ticket.id).requestQuantity >
+                          ticket.validation.available + getTicketSummary(ticket.id).waitlistQuantity &&
                         ticket.validation.available != 0
                       "
                     >
                       {{ ticket.validation.available }} Ticket Added to cart. Want to join the waitlist for
                       {{ getTicketSummary(ticket.id).requestQuantity - ticket.validation.available }} tickets?
-                      <a href="#">Join waitlist</a>
+                      <a href="javascript:void(0);" (click)="joinWaitlist(ticket.id, ticket.validation.available)"
+                        >Join waitlist</a
+                      >
                     </div>
-                    <div
-                      class="validation-message"
-                      *ngIf="ticket.validation.available == 0 && getTicketSummary(ticket.id).requestQuantity"
-                    >
+                    <div class="validation-message" *ngIf="getTicketSummary(ticket.id).waitlistQuantity > 0">
                       {{ getTicketSummary(ticket.id).requestQuantity }} Tickets Waitlisted.
-                      <a href="#" (click)="removeWishlist(ticket.id)">Cancel</a>
+                      <a href="javascript:void(0);" (click)="removeWishlist(ticket.id, i)">Cancel</a>
                     </div>
                   </ng-container>
                 </div>
@@ -155,7 +155,7 @@
     <app-order-summary
       [orderSummary]="getOrderSummary"
       [currentCurrency]="getCurrentEvent.currency"
-      (triggerValidation)="validate()"
+      (triggerValidation)="checkout()"
       [submitText]="'Checkout'"
       [isFormValid]="getOrderSummary && getOrderSummary.length"
     ></app-order-summary>

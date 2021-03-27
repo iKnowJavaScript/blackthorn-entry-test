@@ -106,7 +106,7 @@ export class CheckoutTicketComponent implements OnInit {
       this.removeTicketFromSummary(ticketId);
       return;
     }
-    let { title, price, id } = this.getCurrentEvent.tickets.find((ticket) => ticket.id === ticketId);
+    let { title, price, id, validation, type } = this.getCurrentEvent.tickets.find((ticket) => ticket.id === ticketId);
 
     if (isDonation) {
       price = value;
@@ -122,6 +122,16 @@ export class CheckoutTicketComponent implements OnInit {
       waitlistQuantity: 0,
       isWaitList: false,
     };
+
+    if (type !== this.ticketType.DONATION && type !== this.ticketType.SALES && validation) {
+      if (validation.available == 0) {
+        newOrder.waitlistQuantity = newOrder.requestQuantity;
+        newOrder.availableQuantity = 0;
+        newOrder.isWaitList = true;
+      } else if (validation.available < newOrder.requestQuantity) {
+        newOrder.availableQuantity = validation.available;
+      }
+    }
 
     const index = this.getOrderSummary.findIndex((order) => order.ticketId === ticketId);
 
@@ -139,7 +149,8 @@ export class CheckoutTicketComponent implements OnInit {
     }
   }
 
-  removeWishlist(ticketId: string) {
+  removeWishlist(ticketId: string, formIndex: number) {
+    this.getTicketForm.at(formIndex).get('quantity').setValue(0)
     const orderSummary = this.getOrderSummary.map((order) => {
       if (order.ticketId == ticketId) {
         order.requestQuantity = order.requestQuantity - order.waitlistQuantity;
@@ -152,31 +163,23 @@ export class CheckoutTicketComponent implements OnInit {
     this.setOrderSummary(orderSummary);
   }
 
+  joinWaitlist(ticketId: string, ticketAvailable: number){
+    const orderSummary = this.getOrderSummary.map((order) => {
+      if (order.ticketId == ticketId) {
+        order.waitlistQuantity = order.requestQuantity - ticketAvailable;
+        order.isWaitList = true;
+        return order;
+      }
+      return order;
+    });
+    this.setOrderSummary(orderSummary);
+  }
+
   getTicketSummary(ticketId: string): ISummaryItem {
     return this.getOrderSummary.find((order) => order.ticketId == ticketId) || ({} as any);
   }
 
-  validate(): void {
-    const orderSummary = this.getOrderSummary.map((order) => {
-      const ticket = this.getCurrentEvent.tickets.find((ticket) => ticket.id === order.ticketId);
-      if (ticket.type !== this.ticketType.DONATION && ticket.type !== this.ticketType.SALES && ticket.validation) {
-        if (ticket.validation.available == 0) {
-          order.waitlistQuantity = order.requestQuantity;
-          order.isWaitList = true;
-          return order;
-        }
-
-        if (ticket.validation.available < order.requestQuantity) {
-          order.availableQuantity = ticket.validation.available;
-          return order;
-        }
-        return order;
-      }
-      order.availableQuantity = order.requestQuantity;
-      return order;
-    });
-
-    this.checkoutService.setOrderSummary(orderSummary);
+  checkout(): void {
     this.router.navigate(['../checkout-form'], { relativeTo: this.route });
   }
 }
