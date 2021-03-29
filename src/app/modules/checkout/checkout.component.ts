@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { IEvent, CheckoutStep } from 'src/app/shared/models/event-interface';
 import { CheckoutFormComponent } from './components/checkout-form/checkout-form.component';
 import { Subscription } from 'rxjs';
@@ -18,7 +18,12 @@ export class CheckoutComponentComponent implements OnInit, OnDestroy {
   currentCheckoutStep: CheckoutStep = CheckoutStep.TICKET_SELECTION;
   subscription = new Subscription();
 
-  constructor(private route: ActivatedRoute, private checkoutService: CheckoutService, private location: Location) {}
+  constructor(
+    private route: ActivatedRoute,
+    private checkoutService: CheckoutService,
+    private location: Location,
+    private changeRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.subscription.add(
@@ -29,8 +34,11 @@ export class CheckoutComponentComponent implements OnInit, OnDestroy {
     );
 
     this.subscription.add(
-      this.checkoutService.currentCheckoutStep$.subscribe((step)=> this.currentCheckoutStep = step)
-    )
+      this.checkoutService.currentCheckoutStep$.subscribe((step) => {
+        this.currentCheckoutStep = step;
+        this.changeRef.detectChanges();
+      })
+    );
   }
 
   navigateBack() {

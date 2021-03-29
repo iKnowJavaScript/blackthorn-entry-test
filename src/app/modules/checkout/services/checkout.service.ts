@@ -13,7 +13,7 @@ export class CheckoutService {
   isLoader$: BehaviorSubject<Boolean>;
 
   constructor() {
-    this.currentCheckoutStepSubject = new BehaviorSubject(CheckoutStep.TICKET_SELECTION);
+    this.currentCheckoutStepSubject = new BehaviorSubject(null);
     this.currentCheckoutStep$ = this.currentCheckoutStepSubject.asObservable();
     this.currentEvent$ = new BehaviorSubject(null);
     this.isLoader$ = new BehaviorSubject(false);
