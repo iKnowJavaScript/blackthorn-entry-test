@@ -25,6 +25,7 @@ export class CheckoutTicketComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.checkoutService.setStep(CheckoutStep.TICKET_SELECTION);
   }
 
   initForm() {

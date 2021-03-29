@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IEvent, EventEnum, CheckoutStep } from 'src/app/shared/models/event-interface';
+import { IEvent, CheckoutStep } from 'src/app/shared/models/event-interface';
 import { CheckoutFormComponent } from './components/checkout-form/checkout-form.component';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -14,10 +14,8 @@ import { Location } from '@angular/common';
 })
 export class CheckoutComponentComponent implements OnInit, OnDestroy {
   currentEvent: IEvent;
-  ticketType = EventEnum;
   allCheckoutStep = CheckoutStep;
   currentCheckoutStep: CheckoutStep = CheckoutStep.TICKET_SELECTION;
-  showLoader = false;
   subscription = new Subscription();
 
   constructor(private route: ActivatedRoute, private checkoutService: CheckoutService, private location: Location) {}
@@ -29,6 +27,10 @@ export class CheckoutComponentComponent implements OnInit, OnDestroy {
         this.checkoutService.setCurrentEvent(this.currentEvent);
       })
     );
+
+    this.subscription.add(
+      this.checkoutService.currentCheckoutStep$.subscribe((step)=> this.currentCheckoutStep = step)
+    )
   }
 
   navigateBack() {

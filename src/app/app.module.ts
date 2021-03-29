@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ListEventComponent } from "./components/list-event/list-event.component";
-import { SharedModule } from "./shared/modules/shared.module";
 
 
 @NgModule({
@@ -15,6 +14,3 @@ import { SharedModule } from "./shared/modules/shared.module";
   bootstrap: [AppComponent]
 })
 export class AppModule {}
-
-// FormsModule,
-// ReactiveFormsModule,
