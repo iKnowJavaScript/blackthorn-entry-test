@@ -7,8 +7,4 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   title = "Blackthorn";
-
-  getFormValues(event){
-    console.log(event)
-  }
 }
