@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { EventEnum, IEvent, ISummaryItem } from 'src/app/shared/models/event-interface';
+import { CheckoutStep, EventEnum, IEvent, ISummaryItem } from 'src/app/shared/models/event-interface';
 import { CheckoutService } from '../../services/checkout.service';
 
 @Component({
@@ -18,6 +18,7 @@ export class CheckoutFormComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     this.initForm();
+    this.checkoutService.setStep(CheckoutStep.CHECKOUT);
   }
 
   get getCurrentEvent(): IEvent {
