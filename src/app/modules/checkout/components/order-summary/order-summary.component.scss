@@ -1,12 +1,8 @@
 @import '_color';
 @import '_form';
+@import '_buttons';
 
-// .form-control:focus {
-//   box-shadow: none;
-//   border-color: $primaryColor;
-// }
-
-.widget {
+.order-summary__widget {
   margin-bottom: 30px;
   background-color: #fff;
   padding: 30px;
@@ -15,14 +11,17 @@
     border-bottom: 0px;
   }
 
-  & > .widget-title {
+  &--title {
     font-weight: 900;
     letter-spacing: 1px;
     display: table;
     line-height: 1;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
   }
 
-  & > .summary-block {
+  &-item{
     border-bottom: 1px solid #dddbda;
     font-size: 0.9rem;
 
@@ -30,38 +29,57 @@
       border-bottom: 0px;
     }
 
-    & > .summary-content {
-      padding: 12px 0px;
-      &.pb-0 {
-        padding-bottom: 0;
-      }
+    &-summary {
+      padding: 9px 0px;
 
-      & > .summary-head {
+      &--head {
         display: inline-block;
         width: 150px;
+        font-size: 1rem;
+        font-weight: normal;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+        margin-top: 0;
       }
 
-      & > .summary-price {
+      &--price {
         letter-spacing: -1px;
         margin-bottom: 0px;
         display: inline-block;
         float: right;
+        // font-size: 1rem;
+      }
+
+      &--bold{
+        font-size: 1rem;
+      }
+
+      &--muted-text{
+        color: $grey;
       }
     }
   }
 
-  & > a.promo-text {
+  &--link {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
     display: inline-flex;
     margin: 2rem auto;
   }
-}
 
-div.input-group {
-  & > input.form-control {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  & > .custom-secondary {
-    margin-left: 0.5rem;
+  &-inputs {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+
+    &--control {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &--button{
+      margin-left: 0.5rem;
+    }
   }
 }

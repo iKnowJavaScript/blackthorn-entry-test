@@ -1,112 +1,167 @@
 @import '_color';
 @import '_form';
+@import '_buttons';
 
-.box {
-  background-color: #fff;
-  border-radius: 8px;
-  border: 2px solid #e9ebef;
-  padding: 50px;
-  margin-bottom: 40px;
-}
-.box-title {
-  margin-bottom: 30px;
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-.plan-selection {
-  border-bottom: 1px solid #dddbda;
-  padding-bottom: 25px;
-  margin-bottom: 35px;
+:host {
   display: flex;
-  align-items: center;
-  &:last-child {
-    border-bottom: 0px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
+}
+
+.checkout-ticket{
+  display: flex;
+
+  &__form{
+    background-color: #fff;
+    border-radius: 8px;
+    border: 2px solid #e9ebef;
+    padding: 50px;
+    margin-bottom: 40px;
+    padding-top: 20px;
   }
 
-  .plan-asset {
-    margin-right: 1.5rem;
-    & img {
-      object-fit: cover;
+  &__element {
+    border-bottom: 1px solid #dddbda;
+    padding-bottom: 25px;
+    margin-bottom: 35px;
+    &:last-child {
+      border-bottom: 0px;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
     }
-  }
 
-  & p {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-  }
+    &--title{
+      font-weight: 900;
+      letter-spacing: 1px;
+      display: table;
+      line-height: 1;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
+    }
 
-  .plan-quantity {
-    display: flex;
-    align-items: center;
-    margin-top: 1rem;
-    & > select.custom-select {
-      max-width: 70px;
-      display: block;
-      margin-left: 1rem;
-      &:focus {
-        outline: none !important;
-        box-shadow: none;
-        border: 0;
-        border: 1px solid #ced4da;
+    &--asset {
+      margin-right: 1.5rem;
+      & img {
+        object-fit: cover;
       }
     }
 
-    & > .donation-option {
+    & p {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    &_quantity {
       display: flex;
       align-items: center;
+      margin-top: 1rem;
+      &--custom-select {
+        max-width: 70px;
+        display: block;
+        margin-left: 1rem;
+        &:focus {
+          outline: none !important;
+          box-shadow: none;
+          border: 0;
+          border: 1px solid #ced4da;
+        }
+      }
+
+      &--donation-option {
+        display: flex;
+        align-items: center;
+      }
+
+      &--price {
+        font-size: 0.94rem;
+      }
     }
 
-    & > span.price {
-      font-size: 0.94rem;
+    &--validation {
+      background: rgba(225, 218, 207, 0.31);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      padding: 0.5rem;
+      margin-top: 1rem;
+      & a {
+        text-decoration: underline;
+      }
     }
   }
 
-  .validation-message {
-    background: rgba(225, 218, 207, 0.31);
-    border-radius: 4px;
+  &__disclaimer {
     font-size: 0.8rem;
-    padding: 0.5rem;
-    margin-top: 1rem;
-    & a {
-      text-decoration: underline;
+    &--danger {
+      color: $dangerColor;
     }
+    &--warning {
+      color: $warningColor;
+    }
+  }
+
+  &__donation-button {
+    & > .btn{
+      margin-right: 0.5rem;
+      display: inline-flex;
+      font-size: 0.8rem;
+    }
+    & .input-group {
+      & .btn {
+        border: 1px solid $warningColor;
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+        font-size: 0.7rem;
+      }
+      & .form-control {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  &__summary{
+    position: sticky;
+    top: 0;
+    height: 25vh;
+    padding: 0 15px;
   }
 }
 
-.widget-title {
-  font-weight: 900;
-  letter-spacing: 1px;
-  display: table;
-  line-height: 1;
-}
-
-span.price-discalimer {
-  font-size: 0.8rem;
-  &.danger {
-    color: $dangerColor;
+@media only screen and (min-width: 992px) {
+  .checkout-ticket__form {
+    flex: 0 0 66.66667%;
   }
-  &.warning {
-    color: $warningColor;
+
+  .checkout-ticket__summary {
+    flex: 0 0 33.33333%;
   }
 }
 
-div.donation-option {
-  & > button {
-    margin-right: 0.5rem;
-    display: inline-flex;
-    font-size: 0.8rem;
+@media only screen and (min-width: 768px) {
+  .checkout-ticket__form {
+    flex: 0 0 66.66667%;
   }
-  & .input-group {
-    & button {
-      border: 1px solid $warningColor;
-      border-top-left-radius: 0.25rem;
-      border-bottom-left-radius: 0.25rem;
-      font-size: 0.7rem;
-    }
-    & input {
-      font-size: 0.7rem;
-    }
+
+  .checkout-ticket__summary {
+    flex: 0 0 33.33333%;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .checkout-ticket__form {
+    flex: 0 0 58.33333%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .checkout-ticket{
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .checkout-ticket__summary {
+    padding: 0 50px;
+    max-width: 100vw;
+  }
+
+  .checkout-ticket__element_quantity--donation-option{
+    flex-wrap: wrap;
   }
 }

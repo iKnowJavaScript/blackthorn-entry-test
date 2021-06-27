@@ -1,19 +1,13 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-9 col-md-9 event-list-container">
-      <h3>Available Events</h3>
+<div class="list-event">
+      <h2 class="list-event--header">Available Events</h2>
       <ng-container *ngFor="let event of eventsList; let i = index">
-        <div class="box clickable" (click)="handleSelection(event.id)">
-          <div class="plan-selection d-flex align-items-center">
-            <div class="plan-data">
-              <h5 class="widget-title">{{ event.name }}</h5>
-              <p class="plan-text">{{ event.description }}</p>
-              <span class="price-discalimer text-muted">> See all event packages and tickets</span>
+        <div class="list-event__item list-event--clickable" (click)="handleSelection(event.id)">
+          <!-- <div class="plan-selection d-flex align-items-center"> -->
+              <h5 class="list-event__item--title">{{ event.name }}</h5>
+              <p class="list-event__item--desc">{{ event.description }}</p>
+              <span class="list-event__item--disclaimer">> See all event packages and tickets</span>
               <div class="quantity d-flex align-items-center"></div>
-            </div>
-          </div>
+            <!-- </div> -->
         </div>
       </ng-container>
-    </div>
-  </div>
 </div>
