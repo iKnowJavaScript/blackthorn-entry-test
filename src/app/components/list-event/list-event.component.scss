@@ -1,51 +1,52 @@
 @import '_color';
 
-.event-list-container {
+$content-layout-width: 100%;
+
+:host {
+  display: flex;
+}
+
+.list-event {
+  width: $content-layout-width;
+  max-width: 972px;
   margin: auto;
   padding-top: 60px;
   padding-bottom: 80px;
-  & > h3 {
+
+  &__item {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 2px solid #e9ebef;
+    padding: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #dddbda;
+
+    &--title {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    &--desc {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    &--disclaimer {
+      font-size: 0.8rem;
+      color: $grey;
+    }
+  }
+
+  &--header{
     text-align: center;
     margin-bottom: 1rem;
   }
-}
 
-.box {
-  background-color: #fff;
-  border-radius: 8px;
-  border: 2px solid #e9ebef;
-  padding: 50px;
-  margin-bottom: 40px;
-  &.clickable {
+  &--clickable{
     cursor: pointer;
     &:hover {
       opacity: 0.8;
     }
-  }
-}
-
-.plan-selection {
-  border-bottom: 1px solid #dddbda;
-  padding-bottom: 25px;
-  margin-bottom: 35px;
-  &:last-child {
-    border-bottom: 0px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-  }
-
-  & p {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-  }
-}
-
-span.price-discalimer {
-  font-size: 0.8rem;
-  &.danger {
-    color: $dangerColor;
-  }
-  &.warning {
-    color: $warningColor;
   }
 }

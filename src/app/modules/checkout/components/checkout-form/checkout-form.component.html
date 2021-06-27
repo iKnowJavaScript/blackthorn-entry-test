@@ -1,40 +1,36 @@
-<div class="row">
-  <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
-    <div class="container">
+<div class="checkout-form">
+    <div class="checkout-form__main">
       <div class="custom-stepper" style="margin-bottom: 50px">
         <span aria-label="Tickets" class="custom-step justify-content-start active"> </span>
         <span aria-label="Sessions" class="custom-step justify-content-center"> </span>
         <span aria-label="Payments" class="custom-step justify-content-end"> </span>
       </div>
-      <div class="row notice-row">
-        <div class="col-md-12">
-          <h5>Tickets</h5>
-          <div class="ticket-card">
-            <div class="ticket-description">
-              <div class="ticket-asset">
+      <div class="checkout-form__notice">
+          <h5 class="checkout-form__notice--title">Tickets</h5>
+          <div class="checkout-form__notice-card">
+            <div class="checkout-form__notice-card-description">
+              <div class="checkout-form__notice-card-description--asset">
                 <img src="assets/svg/rush-svg.svg" alt="rush-logo" />
               </div>
-              <div class="ticket-text">
+              <div class="checkout-form__notice-card-description--text">
                 <span>In a rush?</span>
                 <span>Register your tickets now or after checking out. Your choice.</span>
               </div>
             </div>
-            <a href="#" class="link">Fill this out later</a>
+            <a href="#" class="checkout-form__notice-card--link">Fill this out later</a>
           </div>
-        </div>
       </div>
       <form class="needs-validation" novalidate="" [formGroup]="form">
         <div
-          class="row form-row"
+          class="checkout-form__element"
           *ngFor="let control of getFreeTicketForm.controls; let i = index"
           [formGroup]="control"
         >
-          <div class="col-md-12">
-            <p class="mb-0">
+            <p class="checkout-form__element--heading">
               Attendee {{ formHeading[i + '__free']['attendee'] }} - {{ formHeading[i + '__free']['title'] }}
             </p>
-            <div class="row">
-              <div class="col-md-6 mb-0">
+            <div class="checkout-form__element-row">
+              <div class="checkout-form__element-medium checkout-form__element---no-b-margin checkout-form__element--right-padding">
                 <label for="firstName"></label>
                 <input
                   type="text"
@@ -58,7 +54,7 @@
                   Valid first name is required.
                 </div>
               </div>
-              <div class="col-md-6 mb-0">
+              <div class="checkout-form__element-medium checkout-form__element---no-b-margin checkout-form__element--left-padding">
                 <label for="lastName"></label>
                 <input
                   type="text"
@@ -84,7 +80,7 @@
               </div>
             </div>
 
-            <div class="mb-0">
+            <div class="checkout-form__element---no-b-margin">
               <label for="email"></label>
               <input
                 type="email"
@@ -105,11 +101,11 @@
               </div>
             </div>
 
-            <div class="mt-4">
+            <div class="checkout-form__element-checker">
               <label for="address"
                 >Would you like to receive the branded connections and other e-communications from the us?</label
               >
-              <div class="d-block my-3">
+              <div class="d-block checkout-form__element-block">
                 <div class="custom-control custom-radio">
                   <input
                     type="radio"
@@ -134,20 +130,18 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
 
         <div
-          class="row form-row"
+          class="checkout-form__element"
           *ngFor="let control of getOtherTicketForm.controls; let i = index"
           [formGroup]="control"
         >
-          <div class="col-md-12">
-            <p class="mb-0">
+            <p class="checkout-form__element--heading">
               Attendee {{ formHeading[i + '__other']['attendee'] }} - {{ formHeading[i + '__other']['title'] }}
             </p>
-            <div class="row">
-              <div class="col-md-6 mb-0">
+            <div class="checkout-form__element-row">
+              <div class="checkout-form__element-medium checkout-form__element---no-b-margin checkout-form__element--right-padding">
                 <label for="firstName"></label>
                 <input
                   type="text"
@@ -171,7 +165,7 @@
                   Valid first name is required.
                 </div>
               </div>
-              <div class="col-md-6 mb-0">
+              <div class="checkout-form__element-medium checkout-form__element---no-b-margin checkout-form__element--left-padding">
                 <label for="lastName"></label>
                 <input
                   type="text"
@@ -197,7 +191,7 @@
               </div>
             </div>
 
-            <div class="mb-0">
+            <div class="checkout-form__element---no-b-margin">
               <label for="email"></label>
               <input
                 type="email"
@@ -220,11 +214,11 @@
               </div>
             </div>
 
-            <div class="mb-0">
+            <div class="checkout-form__element---no-b-margin">
               <label for="job"></label>
               <input type="text" class="form-control" formControlName="job" [id]="'job' + i" placeholder="Job Title" />
             </div>
-            <div class="mb-0">
+            <div class="checkout-form__element---no-b-margin">
               <label for="company"></label>
               <input
                 type="text"
@@ -234,7 +228,7 @@
                 placeholder="Company"
               />
             </div>
-            <div class="mb-0">
+            <div class="checkout-form__element---no-b-margin">
               <label for="country"></label>
               <input
                 type="text"
@@ -258,11 +252,9 @@
               </div>
             </div>
           </div>
-        </div>
       </form>
     </div>
-  </div>
-  <div class="col-lg-4 col-md-4 col-xs-12" style="position: sticky; top: 0; height: 25vh">
+  <div class="checkout-form__summary">
     <app-order-summary
       [orderSummary]="getOrderSummary"
       [currentCurrency]="getCurrentEvent.currency"
