@@ -96,3 +96,15 @@ div.input-group {
   margin-top: 0.3rem;
   font-size: 80%;
 }
+
+.form-check-input:checked ~ .form-check-label::before {
+  color: $white;
+  border-color: $secondaryColor;
+  background-color: $red;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: $white;
+  border-color: $secondaryColor;
+  background-color: $secondaryColor;
+}
